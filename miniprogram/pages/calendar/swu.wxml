@@ -1,0 +1,43 @@
+<!-- 日历 -->
+<form class="query" bindsubmit="submitClick" style="width: 563rpx; height: 66rpx; display: flex; position: relative; left: 0rpx; top: 38rpx; box-sizing: border-box">
+    <view style="position: relative; left: 0rpx; top: -8rpx; width: 750rpx; height: 64rpx; display: block; box-sizing: border-box" > 
+        <input style="width: 455rpx; height: 15rpx; display: block; box-sizing: border-box; position: relative; left: 148rpx; top: 13rpx"name="name"class= "weui-input"maxlength="20"placeholder="        请输入查询日期"/>  
+        <button class="btn" bindtap="submitClick" type="primary" form-type="submit" size="mini" style="position: relative; left: 654rpx; top: -67rpx"> 查询</button>
+    </view>
+</form>
+<view class="section" style="position: relative; left: 0rpx; top: 40rpx">
+  <view class="section__title">请选择学期</view>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{semesterTitle}}">
+    <view class="picker">
+      {{semesterTitle[index]}}
+    </view>
+  </picker>
+</view>
+<view class="myReport-calendar" style="position: relative; left: -26rpx; top: 0rpx">            
+            <view class="calendar">
+                <view class="selectDate">
+                    <view class="date-wrap">
+                        {{year}}年{{month}}月
+                    </view>
+                </view> 
+                <view class="week">
+                    <block wx:for="{{weekArr}}" wx:for-index="index" wx:for-item="item" wx:key="key">
+                        <view>{{item}}</view>
+                    </block>
+                </view> 
+                <view class="date-box"> 
+                    <view wx:for="{{dateArr}}" wx:key="key" data-id="{{item.eventdetail}}" bindtap="bind_publish">
+                        <view class='{{theDay == item.isToday ? "nowDay" : ""}}'>
+                            <view class="date-head" >
+                                <view>{{item.dateNum}}<text>{{item.event}}</text></view>
+                            </view>
+                        </view>
+                      </view>
+           </view>
+     </view>
+</view>
+<view class="content-btn-group">
+<button class="btn" bindtap="lastMonthClick" type="primary" size="mini"> 上月 </button>
+<button class="btn" bindtap="todayClick" type="primary" size="mini"> 今天 </button>
+<button class="btn" bindtap="nextMonthClick" type="primary" size="mini"> 下月 </button>
+</view>
