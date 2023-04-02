@@ -1,2 +1,2 @@
-# calender
+# calendar
 SWU calender by wxxcx
